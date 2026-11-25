@@ -1,0 +1,303 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>DevTrack - Task Management System</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+
+<body>
+
+    <div class="dashboard">
+
+        <!-- SIDEBAR -->
+        <aside class="sidebar">
+
+            <h2 class="logo">DevTrack<span>.</span></h2>
+
+            <p class="menu-title">WORKSPACE</p>
+
+            <nav>
+                <a href="#dashboard" class="nav-link active" data-section="dashboard">Dashboard</a>
+                <a href="#projects" class="nav-link" data-section="projects">Projects</a>
+                <a href="#board" class="nav-link" data-section="board">Kanban Board</a>
+                <a href="#reports" class="nav-link" data-section="reports">Reports</a>
+            </nav>
+
+            <div class="sidebar-bottom">
+                <p>DEVTRACK V1.0</p>
+                <p>Task Management System</p>
+            </div>
+
+        </aside>
+
+
+        <!-- MAIN CONTENT -->
+        <main class="main-content">
+
+            <!-- HEADER -->
+            <header class="topbar">
+
+                <div>
+                    <h1 id="page-title">Dashboard</h1>
+                    <p>Welcome back! Here's your project overview.</p>
+                </div>
+
+                <button class="primary-btn" id="add-task-btn">
+                    + Create Task
+                </button>
+
+            </header>
+
+
+            <!-- DASHBOARD SECTION -->
+            <section id="dashboard" class="page-section">
+
+                <div class="stats-container">
+
+                    <div class="stat-card">
+                        <p>Total Tasks</p>
+                        <h2 id="total-tasks">0</h2>
+                        <span>All project tasks</span>
+                    </div>
+
+                    <div class="stat-card">
+                        <p>To Do</p>
+                        <h2 id="todo-tasks">0</h2>
+                        <span>Waiting to start</span>
+                    </div>
+
+                    <div class="stat-card">
+                        <p>In Progress</p>
+                        <h2 id="progress-tasks">0</h2>
+                        <span>Currently working</span>
+                    </div>
+
+                    <div class="stat-card">
+                        <p>Completed</p>
+                        <h2 id="completed-tasks">0</h2>
+                        <span>Successfully finished</span>
+                    </div>
+
+                </div>
+
+
+                <!-- PROJECT OVERVIEW -->
+                <div class="content-card">
+
+                    <div class="section-heading">
+                        <div>
+                            <h2>Project Overview</h2>
+                            <p>Website Development</p>
+                        </div>
+                        <span class="project-label">ACTIVE PROJECT</span>
+                    </div>
+
+                    <div class="progress-info">
+                        <span>Overall Progress</span>
+                        <strong id="progress-percentage">0%</strong>
+                    </div>
+
+                    <div class="progress-bar">
+                        <div id="progress-fill"></div>
+                    </div>
+
+                </div>
+
+
+                <!-- RECENT TASKS -->
+                <div class="content-card">
+
+                    <div class="section-heading">
+                        <div>
+                            <h2>Recent Tasks</h2>
+                            <p>Latest project activities</p>
+                        </div>
+                    </div>
+
+                    <div class="table-wrapper">
+                        <table>
+                            <thead>
+                                <tr>
+                                    <th>Task ID</th>
+                                    <th>Task Name</th>
+                                    <th>Priority</th>
+                                    <th>Status</th>
+                                </tr>
+                            </thead>
+
+                            <tbody id="recent-task-list"></tbody>
+                        </table>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- PROJECTS SECTION -->
+            <section id="projects" class="page-section hidden">
+
+                <div class="content-card">
+                    <h2>My Projects</h2>
+                    <p>Manage your development projects.</p>
+
+                    <div class="project-item">
+                        <div>
+                            <h3>Website Development</h3>
+                            <p>DEV-PROJECT-01</p>
+                        </div>
+                        <span class="project-label">ACTIVE</span>
+                    </div>
+
+                    <div class="project-item">
+                        <div>
+                            <h3>DevTrack Application</h3>
+                            <p>DEV-PROJECT-02</p>
+                        </div>
+                        <span class="project-label">ACTIVE</span>
+                    </div>
+                </div>
+
+            </section>
+
+
+            <!-- KANBAN BOARD SECTION -->
+            <section id="board" class="page-section hidden">
+
+                <div class="board-toolbar">
+
+                    <div>
+                        <h2>Kanban Board</h2>
+                        <p>Track tasks through their workflow.</p>
+                    </div>
+
+                    <input type="text" id="search-task"
+                           placeholder="Search tasks...">
+
+                </div>
+
+
+                <div class="kanban-board">
+
+                    <div class="kanban-column">
+                        <h3>TO DO <span id="todo-count">0</span></h3>
+                        <div id="todo-list" class="task-list"></div>
+                    </div>
+
+                    <div class="kanban-column">
+                        <h3>IN PROGRESS <span id="progress-count">0</span></h3>
+                        <div id="progress-list" class="task-list"></div>
+                    </div>
+
+                    <div class="kanban-column">
+                        <h3>COMPLETED <span id="done-count">0</span></h3>
+                        <div id="done-list" class="task-list"></div>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- REPORTS SECTION -->
+            <section id="reports" class="page-section hidden">
+
+                <div class="content-card">
+
+                    <h2>Project Reports</h2>
+                    <p>Current task distribution.</p>
+
+                    <div class="report-row">
+                        <span>Total Tasks</span>
+                        <strong id="report-total">0</strong>
+                    </div>
+
+                    <div class="report-row">
+                        <span>Pending Tasks</span>
+                        <strong id="report-pending">0</strong>
+                    </div>
+
+                    <div class="report-row">
+                        <span>In Progress Tasks</span>
+                        <strong id="report-progress">0</strong>
+                    </div>
+
+                    <div class="report-row">
+                        <span>Completed Tasks</span>
+                        <strong id="report-completed">0</strong>
+                    </div>
+
+                </div>
+
+            </section>
+
+
+            <!-- CREATE TASK FORM -->
+            <section id="task-form-section" class="content-card hidden">
+
+                <div class="section-heading">
+                    <div>
+                        <h2 id="form-heading">Create New Task</h2>
+                        <p>Add a task to your project.</p>
+                    </div>
+                    <button class="close-btn" id="close-form">×</button>
+                </div>
+
+                <form id="task-form">
+
+                    <label for="task-name">Task Name</label>
+                    <input type="text" id="task-name"
+                           placeholder="Enter task name" required>
+
+                    <label for="task-description">Description</label>
+                    <textarea id="task-description"
+                              placeholder="Enter task description"></textarea>
+
+                    <div class="form-row">
+
+                        <div>
+                            <label for="task-priority">Priority</label>
+                            <select id="task-priority">
+                                <option value="High">High</option>
+                                <option value="Medium" selected>Medium</option>
+                                <option value="Low">Low</option>
+                            </select>
+                        </div>
+
+                        <div>
+                            <label for="task-status">Status</label>
+                            <select id="task-status">
+                                <option value="To Do">To Do</option>
+                                <option value="In Progress">In Progress</option>
+                                <option value="Completed">Completed</option>
+                            </select>
+                        </div>
+
+                    </div>
+
+                    <label for="task-date">Due Date</label>
+                    <input type="date" id="task-date">
+
+                    <div class="form-actions">
+                        <button type="button" class="secondary-btn"
+                                id="cancel-form">Cancel</button>
+                        <button type="submit" class="primary-btn">
+                            Save Task
+                        </button>
+                    </div>
+
+                </form>
+
+            </section>
+
+        </main>
+
+    </div>
+
+    <script src="script.js"></script>
+
+</body>
+</html>
